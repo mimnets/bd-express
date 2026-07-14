@@ -8,12 +8,16 @@
 
 - [x] **0.1** Create project repository structure
 - [x] **0.2** Set up AI context files (CONTEXT, RULES, MEMORY, TASKS)
-- [ ] **0.3** Initialize Turborepo + pnpm workspace
-- [ ] **0.4** Configure TypeScript (root + packages)
-- [ ] **0.5** Set up ESLint + Prettier configuration
-- [ ] **0.6** Create `.env.example` with all required variables
-- [ ] **0.7** Set up Prisma schema (`packages/database`)
-- [ ] **0.8** Configure GitHub repository (branches, actions, templates)
+- [x] **0.3** Initialize Turborepo + pnpm workspace
+- [x] **0.4** Configure TypeScript (root + packages)
+- [x] **0.5** Set up ESLint + Prettier configuration
+- [x] **0.6** Create `.env.example` with all required variables
+- [x] **0.7** Set up Prisma schema (`packages/database`)
+- [x] **0.8** Configure GitHub repository (branches, actions, templates)
+- [x] **0.9** Create shared types, Zod schemas, AppError framework
+- [x] **0.10** Create UI component library (Button, Card, Badge, Input, Spinner)
+- [x] **0.11** Create API service stubs (payment, product, shipping, quote)
+- [x] **0.12** Set up China-API URL parser + AI service stubs
 
 ## Phase 1: MVP Development (Weeks 1-8)
 
