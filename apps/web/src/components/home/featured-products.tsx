@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const FEATURED_PRODUCTS = [
-  { id: "1", titleBn: "ওয়্যারলেস ব্লুটুথ ইয়ারবাডস", titleEn: "Wireless Bluetooth Earbuds", priceBdt: 675, priceCny: 45, categoryEn: "Electronics", categoryBn: "ইলেকট্রনিক্স" },
-  { id: "2", titleBn: "স্মার্ট ওয়াচ ফিটনেস ট্র্যাকার", titleEn: "Smart Watch Fitness Tracker", priceBdt: 1335, priceCny: 89, categoryEn: "Electronics", categoryBn: "ইলেকট্রনিক্স" },
-  { id: "3", titleBn: "মেনস ক্যাজুয়াল কটন টি-শার্ট", titleEn: "Men's Casual Cotton T-Shirt", priceBdt: 180, priceCny: 12, categoryEn: "Fashion", categoryBn: "ফ্যাশন" },
-  { id: "4", titleBn: "রানিং সুজ লাইটওয়েট", titleEn: "Running Shoes Lightweight", priceBdt: 825, priceCny: 55, categoryEn: "Shoes", categoryBn: "জুতা" },
+  { id: "1", titleBn: "ওয়্যারলেস ব্লুটুথ ইয়ারবাডস", titleEn: "Wireless Bluetooth Earbuds", priceBdt: 855, priceCny: 45, categoryEn: "Electronics", categoryBn: "ইলেকট্রনিক্স" },
+  { id: "2", titleBn: "স্মার্ট ওয়াচ ফিটনেস ট্র্যাকার", titleEn: "Smart Watch Fitness Tracker", priceBdt: 1691, priceCny: 89, categoryEn: "Electronics", categoryBn: "ইলেকট্রনিক্স" },
+  { id: "3", titleBn: "মেনস ক্যাজুয়াল কটন টি-শার্ট", titleEn: "Men's Casual Cotton T-Shirt", priceBdt: 228, priceCny: 12, categoryEn: "Fashion", categoryBn: "ফ্যাশন" },
+  { id: "4", titleBn: "রানিং সুজ লাইটওয়েট", titleEn: "Running Shoes Lightweight", priceBdt: 1045, priceCny: 55, categoryEn: "Shoes", categoryBn: "জুতা" },
 ];
 
 export function FeaturedProducts() {

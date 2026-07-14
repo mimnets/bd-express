@@ -1,7 +1,7 @@
 // BDXpress Constants — shared across all packages
 // Separated to avoid circular dependencies between index.ts and utils.ts
 
-export const EXCHANGE_RATE = 15; // 1 CNY ≈ 15 BDT (approximate)
+export const EXCHANGE_RATE = 19; // 1 CNY ≈ 19 BDT (approximate)
 
 export const SERVICE_FEE_TIERS = [
   { maxAmount: 5000, percentage: 12, minFee: 300 },
