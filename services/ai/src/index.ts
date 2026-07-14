@@ -19,7 +19,7 @@ export interface ChatResponse {
  */
 export async function handleChatMessage(
   messages: ChatMessage[],
-  context?: { userId?: string; orderId?: string },
+  _context?: { userId?: string; orderId?: string },
 ): Promise<ChatResponse> {
   // TODO: Phase 2 — Integrate OpenAI/Anthropic API
   // For MVP: return canned responses

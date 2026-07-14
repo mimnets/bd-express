@@ -20,9 +20,11 @@ export class AppError extends Error {
     this.isOperational = true;
     this.context = context;
 
-    // Maintain proper stack trace in V8
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, this.constructor);
+    // Maintain proper stack trace in V8 (Node.js / Chrome)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const ErrorCtor = Error as any;
+    if (typeof ErrorCtor.captureStackTrace === "function") {
+      ErrorCtor.captureStackTrace(this, this.constructor);
     }
   }
 

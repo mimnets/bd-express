@@ -35,7 +35,7 @@ export async function fetchProductFromUrl(
 export async function searchProducts(
   keyword: string,
   platform: "taobao" | "alibaba_1688" = "alibaba_1688",
-  page: number = 1,
+  _page: number = 1,
 ): Promise<{ items: ChinaProductData[]; total: number }> {
   // TODO: Phase 2 implementation
   console.log(`[ChinaAPI] Searching ${platform} for: ${keyword}`);

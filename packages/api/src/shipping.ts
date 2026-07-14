@@ -92,7 +92,8 @@ export async function addTrackingUpdate(
   return prisma.shipment.update({
     where: { id: shipmentId },
     data: {
-      statusUpdates: [...existingUpdates, newUpdate],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      statusUpdates: [...existingUpdates, newUpdate] as any,
     },
   });
 }

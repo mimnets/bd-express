@@ -17,12 +17,14 @@ export interface GenerateQuoteParams {
 }
 
 const USD_TO_BDT = 120;
-const SHIPPING_COST_PER_KG: Record<string, number> = {
+const SHIPPING_COST_PER_KG = {
   air: 8,
   sea: 3,
   express: 13,
   sea_fcl: 2,
-};
+} as const;
+
+type ShippingMethodKey = keyof typeof SHIPPING_COST_PER_KG;
 
 const CUSTOMS_RATE = 0.25; // 25% customs duty estimate
 
@@ -49,7 +51,8 @@ export function calculateQuote(params: {
   const productCostBdt = Math.round(productCostCny * EXCHANGE_RATE);
   const serviceFeeBdt = calculateServiceFee(productCostBdt);
 
-  const shippingCostUsdPerKg = SHIPPING_COST_PER_KG[shippingMethod] ?? SHIPPING_COST_PER_KG.air;
+  const methodKey = (shippingMethod in SHIPPING_COST_PER_KG ? shippingMethod : "air") as ShippingMethodKey;
+  const shippingCostUsdPerKg = SHIPPING_COST_PER_KG[methodKey];
   const shippingFeeBdt = Math.round(shippingCostUsdPerKg * USD_TO_BDT * weightKg);
 
   const customsEstimateBdt = Math.round(productCostBdt * CUSTOMS_RATE);
@@ -80,7 +83,8 @@ export async function createQuote(params: GenerateQuoteParams) {
     data: {
       userId: params.userId,
       sourceUrl: params.sourceUrl,
-      productDetails: params.productDetails,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      productDetails: params.productDetails as any,
       productCostCny: params.productCostCny,
       productCostBdt: quote.productCostBdt,
       serviceFeeBdt: quote.serviceFeeBdt,
