@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main, master]
 
+env:
+  # Needed early so Prisma generate works in postinstall
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  DIRECT_URL: ${{ secrets.DIRECT_URL }}
+
 jobs:
   quality:
     name: Quality Check
@@ -50,13 +55,9 @@ jobs:
       - run: pnpm install
 
       - name: Push DB Schema
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DIRECT_URL: ${{ secrets.DIRECT_URL }}
         run: |
           cd packages/database
           npx prisma db push
-          npx prisma generate
           npx tsx src/seed.ts
 
   deploy:
