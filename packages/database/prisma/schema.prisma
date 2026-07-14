@@ -1,0 +1,268 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Users ────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  phone     String   @unique
+  password  String?  // Null for OAuth users
+  fullName  String
+  avatarUrl String?
+  role      String   @default("customer") // customer | admin | seller | super_admin
+  language  String   @default("bn")       // bn | en
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  addresses Address[]
+  orders    Order[]
+  payments  Payment[]
+  quotes    Quote[]
+  reviews   Review[]
+}
+
+// ─── Addresses ────────────────────────────────────────
+
+model Address {
+  id            String   @id @default(cuid())
+  userId        String
+  label         String?  // Home, Office, etc.
+  fullName      String
+  phone         String
+  city          String
+  district      String
+  area          String
+  streetAddress String
+  isDefault     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── Categories ───────────────────────────────────────
+
+model Category {
+  id          String     @id @default(cuid())
+  nameEn      String
+  nameBn      String?
+  slug        String     @unique
+  description String?
+  imageUrl    String?
+  parentId    String?
+  sortOrder   Int        @default(0)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+  products Product[]
+
+  @@index([parentId])
+  @@index([slug])
+}
+
+// ─── Products ─────────────────────────────────────────
+
+model Product {
+  id               String   @id @default(cuid())
+  type             String   @default("curated") // curated | taobao | alibaba_1688 | manual
+  sourcePlatform   String   @default("curated")
+  sourceUrl        String?
+  sourceProductId  String?
+  titleEn          String
+  titleBn          String?
+  description      String?
+  images           String[] // JSON array of URLs
+  priceCny         Decimal  @default(0) @db.Decimal(12, 2)
+  priceBdt         Decimal? @db.Decimal(12, 2)
+  weightKg         Decimal? @db.Decimal(8, 2)
+  categoryId       String?
+  supplierInfo     Json?    // Flexible supplier data
+  isActive         Boolean  @default(true)
+  isFeatured       Boolean  @default(false)
+  stockQuantity    Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  category  Category?   @relation(fields: [categoryId], references: [id])
+  orderItems OrderItem[]
+  reviews   Review[]
+
+  @@index([type])
+  @@index([sourcePlatform])
+  @@index([categoryId])
+  @@index([createdAt])
+}
+
+// ─── Orders ───────────────────────────────────────────
+
+model Order {
+  id                 String   @id @default(cuid())
+  orderNumber        String   @unique
+  userId             String
+  status             String   @default("quoted")
+  // Product snapshot
+  productDetail      Json?
+  quantity           Int      @default(1)
+  // Pricing
+  totalProductCostCny Decimal  @default(0) @db.Decimal(12, 2)
+  serviceFeeBdt      Decimal  @default(0) @db.Decimal(12, 2)
+  shippingFeeBdt     Decimal  @default(0) @db.Decimal(12, 2)
+  customsDutyBdt     Decimal  @default(0) @db.Decimal(12, 2)
+  grandTotalBdt      Decimal  @default(0) @db.Decimal(12, 2)
+  // Shipping
+  shippingMethod     String?  // air | sea | express
+  trackingNumber     String?
+  notes              String?
+  // Meta
+  isUrgent           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  user       User        @relation(fields: [userId], references: [id])
+  items      OrderItem[]
+  payments   Payment[]
+  shipments  Shipment[]
+  statusLogs OrderStatusLog[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([orderNumber])
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  productId String?
+  nameEn    String
+  nameBn    String?
+  quantity  Int      @default(1)
+  priceCny  Decimal  @default(0) @db.Decimal(12, 2)
+  priceBdt  Decimal  @default(0) @db.Decimal(12, 2)
+  imageUrl  String?
+  variant   String?
+  createdAt DateTime @default(now())
+
+  order   Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product? @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+}
+
+model OrderStatusLog {
+  id        String   @id @default(cuid())
+  orderId   String
+  fromStatus String?
+  toStatus  String
+  note      String?
+  changedBy String?  // userId or "system" or "admin"
+  createdAt DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([createdAt])
+}
+
+// ─── Payments ─────────────────────────────────────────
+
+model Payment {
+  id             String   @id @default(cuid())
+  orderId        String
+  userId         String
+  amountBdt      Decimal  @db.Decimal(12, 2)
+  paymentMethod  String   // bkash | nagad | rocket | card | bank
+  transactionId  String?
+  gatewayResponse Json?   // Raw gateway response
+  status         String   @default("pending") // pending | completed | failed | refunded
+  verifiedBy     String?
+  verifiedAt     DateTime?
+  createdAt      DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@index([orderId])
+  @@index([transactionId])
+}
+
+// ─── Shipments ────────────────────────────────────────
+
+model Shipment {
+  id                String   @id @default(cuid())
+  orderId           String
+  trackingNumber    String   @unique
+  carrier           String
+  originWarehouse   String   @default("Guangzhou, China")
+  destinationCity   String
+  estimatedDelivery DateTime?
+  actualDelivery    DateTime?
+  weightKg          Decimal? @db.Decimal(8, 2)
+  shippingCostCny   Decimal? @db.Decimal(12, 2)
+  statusUpdates     Json     @default("[]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  @@index([orderId])
+  @@index([trackingNumber])
+}
+
+// ─── Quotes ───────────────────────────────────────────
+
+model Quote {
+  id             String   @id @default(cuid())
+  userId         String
+  sourceUrl      String?
+  productDetails Json?    // Parsed product data from link
+  productCostCny Decimal  @db.Decimal(12, 2)
+  productCostBdt Decimal  @db.Decimal(12, 2)
+  serviceFeeBdt  Decimal  @db.Decimal(12, 2)
+  shippingFeeBdt Decimal  @db.Decimal(12, 2)
+  customsBdt     Decimal  @default(0) @db.Decimal(12, 2)
+  grandTotalBdt  Decimal  @db.Decimal(12, 2)
+  status         String   @default("pending") // pending | accepted | expired
+  expiresAt      DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// ─── Reviews ──────────────────────────────────────────
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String  @default("")
+  orderId   String?
+  rating    Int      // 1-5
+  comment   String?
+  images    String[]
+  isApproved Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id])
+  product Product? @relation(fields: [productId], references: [id])
+
+  @@index([productId])
+  @@index([userId])
+}

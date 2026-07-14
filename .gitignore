@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+
+# Expo / React Native
+.expo/
+dist/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Build outputs
+build/
+dist/
+.esbuild/
+
+# Database
+*.db
+*.db-journal
+# Note: prisma/migrations/ is committed — it's the source of truth for DB schema
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+.env.*.local
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Turbo
+.turbo/
+
+# Sentry
+.sentryclirc
+
+# TypeScript
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Temporary files
+.tmp/
+tmp/

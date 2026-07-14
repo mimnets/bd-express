@@ -1,0 +1,54 @@
+---
+description: BDXpress project rules for coding assistants
+globs: ["**/*.ts", "**/*.tsx"]
+---
+
+# BDXpress Platform Rules
+
+You are working on BDXpress — a cross-border e-commerce platform for Bangladesh.
+Users source products from Taobao/1688/Alibaba and get them delivered door-to-door in BD.
+
+## Context Files (READ FIRST)
+- `.ai/CONTEXT.md` — Project overview and team info
+- `.ai/RULES.md` — Detailed coding rules
+- `.ai/MEMORY.md` — Decision log
+- `.ai/TASKS.md` — Task tracking
+
+## Tech Stack
+- Next.js 15+ (App Router) — Web
+- React Native (Expo) — Mobile
+- Supabase (PostgreSQL) — Database
+- Prisma — ORM
+- Tailwind CSS + shadcn/ui — Styling
+- SSLCommerz — Payments
+- Turborepo + pnpm — Monorepo
+
+## Style & Conventions
+- TypeScript everywhere. No `any`.
+- Server components by default (Next.js App Router)
+- Tailwind classes for styling
+- Zod for validation
+- React Query for server state
+- Prisma for all database queries
+- `'use client'` only when necessary
+
+## File Structure
+```
+apps/web/       — Next.js public website + customer portal
+apps/mobile/    — Expo React Native app
+apps/admin/     — Admin dashboard
+packages/shared/ — Shared types, constants, utils
+packages/api/    — API service layer
+packages/database/ — Prisma schema & migrations
+packages/ui/     — Shared UI components (shadcn)
+services/        — External integrations
+```
+
+## Critical Rules
+1. Never commit secrets. Use `.env` file.
+2. Always update `.ai/MEMORY.md` for significant decisions.
+3. Always update `.ai/TASKS.md` when completing tasks.
+4. Support Bengali (bn) + English (en) UI.
+5. Mobile-first responsive design.
+6. All times in UTC unless displaying to user.
+7. Currency: store in CNY, display in BDT.
