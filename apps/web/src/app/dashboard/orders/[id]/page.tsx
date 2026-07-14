@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Package, MapPin, Clock, Truck, CheckCircle, Circle } from "lucide-react";
+import { ArrowLeft, Package, MapPin, Clock, Truck, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 interface OrderDetailProps {
@@ -25,9 +25,12 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
   const { id } = await params;
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <Link href="/dashboard/orders" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600">
+        <Link
+          href="/dashboard/orders"
+          className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600"
+        >
           <ArrowLeft className="h-4 w-4" />
           অর্ডার তালিকায় ফিরুন
         </Link>
@@ -49,25 +52,33 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
           <div className="mt-6 space-y-0">
             {ORDER_STATUS_STEPS.map((step, index) => {
               const isCompleted = index < 3; // Mock: first 3 steps done
-              const isCurrent = index === 3;  // Mock: 4th is current
+              const isCurrent = index === 3; // Mock: 4th is current
               return (
                 <div key={step.key} className="flex gap-4">
                   {/* Line + dot */}
                   <div className="flex flex-col items-center">
-                    <div className={`flex h-8 w-8 items-center justify-center rounded-full ${
-                      isCompleted ? "bg-green-500 text-white" :
-                      isCurrent ? "bg-blue-500 text-white" :
-                      "bg-gray-200 text-gray-400"
-                    }`}>
+                    <div
+                      className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                        isCompleted
+                          ? "bg-green-500 text-white"
+                          : isCurrent
+                            ? "bg-blue-500 text-white"
+                            : "bg-gray-200 text-gray-400"
+                      }`}
+                    >
                       <step.icon className="h-4 w-4" />
                     </div>
                     {index < ORDER_STATUS_STEPS.length - 1 && (
-                      <div className={`w-0.5 flex-1 ${isCompleted ? "bg-green-500" : "bg-gray-200"}`} />
+                      <div
+                        className={`w-0.5 flex-1 ${isCompleted ? "bg-green-500" : "bg-gray-200"}`}
+                      />
                     )}
                   </div>
                   {/* Label */}
                   <div className="pb-8">
-                    <p className={`text-sm font-medium ${isCompleted || isCurrent ? "text-gray-900" : "text-gray-400"}`}>
+                    <p
+                      className={`text-sm font-medium ${isCompleted || isCurrent ? "text-gray-900" : "text-gray-400"}`}
+                    >
                       {step.label}
                     </p>
                     {(isCompleted || isCurrent) && (
@@ -87,20 +98,44 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
           <Card>
             <h3 className="font-semibold text-gray-900">পণ্যের বিবরণ</h3>
             <div className="mt-4 space-y-2 text-sm">
-              <p className="flex justify-between"><span className="text-gray-500">পণ্য</span><span>Smart Watch</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">পরিমাণ</span><span>১টি</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">পণ্যের মূল্য</span><span>¥৮৯</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">ওজন</span><span>০.২৫ কেজি</span></p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">পণ্য</span>
+                <span>Smart Watch</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">পরিমাণ</span>
+                <span>১টি</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">পণ্যের মূল্য</span>
+                <span>¥৮৯</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">ওজন</span>
+                <span>০.২৫ কেজি</span>
+              </p>
             </div>
           </Card>
 
           <Card>
             <h3 className="font-semibold text-gray-900">মূল্য বিবরণ</h3>
             <div className="mt-4 space-y-2 text-sm">
-              <p className="flex justify-between"><span className="text-gray-500">পণ্যের মূল্য (BDT)</span><span>৳১,৩৩৫</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">সার্ভিস ফি</span><span>৳১০৬</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">শিপিং (এয়ার)</span><span>৳৯৬০</span></p>
-              <p className="flex justify-between"><span className="text-gray-500">কাস্টমস</span><span>৳৩৩৩</span></p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">পণ্যের মূল্য (BDT)</span>
+                <span>৳১,৩৩৫</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">সার্ভিস ফি</span>
+                <span>৳১০৬</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">শিপিং (এয়ার)</span>
+                <span>৳৯৬০</span>
+              </p>
+              <p className="flex justify-between">
+                <span className="text-gray-500">কাস্টমস</span>
+                <span>৳৩৩৩</span>
+              </p>
               <hr className="my-2" />
               <p className="flex justify-between font-bold text-gray-900">
                 <span>সর্বমোট</span>
