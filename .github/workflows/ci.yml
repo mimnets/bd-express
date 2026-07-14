@@ -57,7 +57,7 @@ jobs:
       - name: Push DB Schema
         run: |
           cd packages/database
-          npx prisma db push
+          npx prisma db push --accept-data-loss
           npx prisma generate
           npx tsx src/seed.ts
 
