@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
@@ -20,16 +21,7 @@ export const metadata: Metadata = {
     template: "%s | BDXpress",
   },
   description:
-    "Source products from Taobao, 1688, and Alibaba with door-to-door delivery to Bangladesh. Pay in BDT with bKash, Nagad, or card.",
-  keywords: [
-    "China sourcing",
-    "Bangladesh",
-    "Taobao",
-    "1688",
-    "Alibaba",
-    "cross-border e-commerce",
-    "BDXpress",
-  ],
+    "Source products from Taobao, 1688, and Alibaba with door-to-door delivery to Bangladesh. Pay in BDT via bKash, Nagad, or card.",
 };
 
 export default function RootLayout({
@@ -38,14 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="bn"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-gray-900">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
