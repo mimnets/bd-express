@@ -102,3 +102,4 @@ See `.ai/RULES.md` for coding conventions and `.ai/TASKS.md` for current tasks.
 ## License
 
 Private — All rights reserved.
+
