@@ -8,7 +8,7 @@ export function LanguageSwitcher() {
 
   return (
     <div className="flex items-center rounded-lg border border-gray-200 bg-white p-0.5">
-      {LANGUAGES.map((lang) => (
+      {LANGUAGES.map((lang: (typeof LANGUAGES)[number]) => (
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}

@@ -31,5 +31,5 @@
       "@bdexpress/ui/*": ["./packages/ui/src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", ".next", "build", "coverage"]
+  "exclude": ["node_modules", "dist", ".next", "build", "coverage", "apps", "services"]
 }
