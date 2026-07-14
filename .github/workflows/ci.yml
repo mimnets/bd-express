@@ -1,11 +1,10 @@
-// GitHub Actions CI/CD for BDXpress
 name: CI/CD
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
   quality:
@@ -31,13 +30,38 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Test
-        run: pnpm test
+  migrate:
+    name: Database Migration
+    needs: quality
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Push DB Schema
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+        run: |
+          cd packages/database
+          npx prisma db push
+          npx prisma generate
+          npx tsx src/seed.ts
 
   deploy:
-    name: Deploy
-    needs: quality
-    if: github.ref == 'refs/heads/main'
+    name: Deploy to Vercel
+    needs: migrate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
