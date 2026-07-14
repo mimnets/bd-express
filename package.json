@@ -16,7 +16,7 @@
     "db:seed": "cd packages/database && npx prisma db seed",
     "db:studio": "cd packages/database && npx prisma studio",
     "db:generate": "cd packages/database && npx prisma generate",
-    "prepare": "husky"
+    "prepare": "husky || exit 0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

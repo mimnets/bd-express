@@ -1,11 +1,16 @@
-import { createServerClient } from "@supabase/ssr";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
 /**
  * Next.js Proxy handler — refreshes Supabase session and protects routes.
  */
 export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request });
+  const pathname = request.nextUrl.pathname;
+
+  const isProtectedRoute = pathname.startsWith("/dashboard");
+  const isAuthRoute = pathname.startsWith("/login") || pathname.startsWith("/signup");
+
+  const supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,10 +20,8 @@ export async function updateSession(request: NextRequest) {
         getAll() {
           return request.cookies.getAll();
         },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        setAll(cookiesToSet: any) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          for (const { name, value, options } of cookiesToSet as any[]) {
+        setAll(cookiesToSet: { name: string; value: string; options: CookieOptions }[]) {
+          for (const { name, value, options } of cookiesToSet) {
             request.cookies.set(name, value);
             supabaseResponse.cookies.set(name, value, options);
           }
@@ -27,21 +30,26 @@ export async function updateSession(request: NextRequest) {
     },
   );
 
-  // Refresh session
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Skip the Supabase round-trip for public routes — avoids latency on every page load
+  if (!isProtectedRoute && !isAuthRoute) {
+    return supabaseResponse;
+  }
 
-  // Protect dashboard routes
-  const isProtectedRoute = request.nextUrl.pathname.startsWith("/dashboard");
-  const isAuthRoute =
-    request.nextUrl.pathname.startsWith("/login") ||
-    request.nextUrl.pathname.startsWith("/signup");
+  // Refresh session (only for routes that need auth state)
+  let user;
+  try {
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  } catch {
+    // If Supabase is unreachable, let the request through.
+    // Protected routes will redirect to /login (safe default);
+    // auth pages will show login/signup instead of redirecting.
+  }
 
   if (isProtectedRoute && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
-    url.searchParams.set("redirect", request.nextUrl.pathname);
+    url.searchParams.set("redirect", pathname);
     return NextResponse.redirect(url);
   }
 
