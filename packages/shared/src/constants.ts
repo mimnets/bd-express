@@ -1,4 +1,4 @@
-// BDXpress Constants — shared across all packages
+// Amdani Xpress Constants — shared across all packages
 // Separated to avoid circular dependencies between index.ts and utils.ts
 
 export const EXCHANGE_RATE = 19; // 1 CNY ≈ 19 BDT (approximate)
@@ -15,8 +15,8 @@ export const SHIPPING_COST_PER_KG_AIR = 8; // USD
 export const SHIPPING_COST_PER_KG_SEA = 3; // USD
 export const SHIPPING_COST_PER_KG_EXPRESS = 13; // USD
 
-export const APP_NAME = "BDXpress";
-export const APP_DOMAIN = "bdexpress.com";
+export const APP_NAME = "Amdani Xpress";
+export const APP_DOMAIN = "amdanixpress.com";
 
 export const BD_CITIES = [
   "Dhaka",

@@ -17,12 +17,12 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 border-b border-rose-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600 shrink-0">
+        <Link href="/" className="flex shrink-0 items-center gap-2 text-xl font-bold text-rose-600">
           <Package className="h-7 w-7" />
-          <span>BDXpress</span>
+          <span>Amdani Xpress</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -31,7 +31,7 @@ export function Navbar() {
             <Link
               key={link.key}
               href={link.href}
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+              className="text-sm font-medium text-gray-600 transition-colors hover:text-rose-600"
             >
               {link.label}
             </Link>
@@ -55,7 +55,9 @@ export function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <LanguageSwitcher />
           <Link href="/login">
-            <Button variant="ghost" size="sm">{t("nav.login")}</Button>
+            <Button variant="ghost" size="sm">
+              {t("nav.login")}
+            </Button>
           </Link>
         </div>
       </div>

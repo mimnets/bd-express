@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { Search, ShoppingBag, Filter } from "lucide-react";
@@ -111,7 +111,7 @@ export default function ProductsPage() {
             <input
               type="search"
               placeholder={t("products.search")}
-              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-4 text-sm focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
             />
           </div>
           <Button variant="outline" className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export default function ProductsPage() {
           {categories.map((cat) => (
             <button
               key={cat}
-              className="rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-600 transition-colors hover:border-blue-300 hover:text-blue-600"
+              className="rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-600 transition-colors hover:border-rose-300 hover:text-rose-600"
             >
               {cat}
             </button>
@@ -135,14 +135,14 @@ export default function ProductsPage() {
           {PRODUCTS.map((product) => (
             <Link key={product.id} href={`/products/${product.id}`}>
               <Card className="group h-full p-0 transition-shadow hover:shadow-md">
-                <div className="flex h-48 items-center justify-center rounded-t-xl bg-gradient-to-br from-blue-50 to-indigo-50">
-                  <ShoppingBag className="h-16 w-16 text-blue-300 transition-transform group-hover:scale-110" />
+                <div className="flex h-48 items-center justify-center rounded-t-xl bg-gradient-to-br from-rose-50 to-rose-100">
+                  <ShoppingBag className="h-16 w-16 text-rose-300 transition-transform group-hover:scale-110" />
                 </div>
                 <div className="p-4">
-                  <p className="text-xs font-medium text-blue-600">
+                  <p className="text-xs font-medium text-rose-600">
                     {language === "bn" ? product.categoryBn : product.categoryEn}
                   </p>
-                  <h3 className="mt-1 font-medium text-gray-900 group-hover:text-blue-600">
+                  <h3 className="mt-1 font-medium text-gray-900 group-hover:text-rose-600">
                     {language === "bn" ? product.titleBn : product.titleEn}
                   </h3>
                   <div className="mt-2 flex items-baseline gap-2">

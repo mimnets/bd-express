@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowLeft, Package, MapPin, Clock, Truck, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -29,7 +29,7 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <Link
           href="/dashboard/orders"
-          className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600"
+          className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-600"
         >
           <ArrowLeft className="h-4 w-4" />
           অর্ডার তালিকায় ফিরুন
@@ -41,7 +41,7 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
             <h1 className="text-2xl font-bold text-gray-900">অর্ডার #{id}</h1>
             <p className="mt-1 text-sm text-gray-500">অর্ডারের বিস্তারিত তথ্য</p>
           </div>
-          <span className="rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700">
+          <span className="rounded-full bg-rose-100 px-4 py-1.5 text-sm font-medium text-rose-700">
             প্রসেসিং
           </span>
         </div>
@@ -62,7 +62,7 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
                         isCompleted
                           ? "bg-green-500 text-white"
                           : isCurrent
-                            ? "bg-blue-500 text-white"
+                            ? "bg-rose-500 text-white"
                             : "bg-gray-200 text-gray-400"
                       }`}
                     >
@@ -139,7 +139,7 @@ export default async function OrderDetailPage({ params }: OrderDetailProps) {
               <hr className="my-2" />
               <p className="flex justify-between font-bold text-gray-900">
                 <span>সর্বমোট</span>
-                <span className="text-blue-600">৳২,৭৩৪</span>
+                <span className="text-rose-600">৳২,৭৩৪</span>
               </p>
             </div>
           </Card>

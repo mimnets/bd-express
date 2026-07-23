@@ -1,4 +1,4 @@
-// BDXpress Shared Types & Constants
+// Amdani Xpress Shared Types & Constants
 
 export * from "./constants";
 export * from "./errors";

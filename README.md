@@ -1,9 +1,9 @@
-# BDXpress Platform 🇧🇩🛒
+# Amdani Xpress Platform 🇧🇩🛒
 
-> Bangladesh's next-generation cross-border e-commerce platform — source products from China (Taobao, 1688, Alibaba) with door-to-door delivery, local payment (bKash/Nagad), and AI-powered automation.
+> Bangladesh's next-generation cross-border import platform — source products from China (Taobao, 1688, Alibaba) with door-to-door delivery, local payment (bKash/Nagad), and AI-powered automation.
 
-**Status:** 🛠️ MVP Development  
-**Competing with:** MoveOn.global, Laobaan.com  
+**Status:** 🛠️ MVP Development
+**Competing with:** MoveOn.global, Laobaan.com
 **Phase:** 0 — Foundation Setup
 
 ---
@@ -12,6 +12,7 @@
 
 ```bash
 # Clone & install
+git clone https://github.com/mimnets/amdani-xpress.git
 pnpm install
 
 # Set up environment
@@ -29,7 +30,7 @@ pnpm dev
 ## Project Structure
 
 ```
-bdexpress-platform/
+amdani-xpress/
 ├── apps/
 │   ├── web/              # Next.js 15 public website + customer portal
 │   ├── mobile/           # Expo React Native (iOS + Android)
@@ -63,19 +64,19 @@ The complete business plan (competitor analysis, SWOT, financials, etc.) is at:
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | Next.js 15 (App Router) — Web |
-| **Mobile** | React Native (Expo) — iOS + Android |
-| **Database** | PostgreSQL (Supabase) + Prisma ORM |
-| **Auth** | Clerk / NextAuth.js |
-| **Payments** | SSLCommerz (bKash, Nagad, cards) |
-| **Styling** | Tailwind CSS + shadcn/ui |
-| **State** | TanStack Query |
-| **Validation** | Zod |
-| **i18n** | next-intl (Bengali + English) |
-| **CI/CD** | GitHub Actions |
-| **Hosting** | Vercel + Supabase |
+| Layer          | Technology                          |
+| -------------- | ----------------------------------- |
+| **Frontend**   | Next.js 15 (App Router) — Web       |
+| **Mobile**     | React Native (Expo) — iOS + Android |
+| **Database**   | PostgreSQL (Supabase) + Prisma ORM  |
+| **Auth**       | Clerk / NextAuth.js                 |
+| **Payments**   | SSLCommerz (bKash, Nagad, cards)    |
+| **Styling**    | Tailwind CSS + shadcn/ui            |
+| **State**      | TanStack Query                      |
+| **Validation** | Zod                                 |
+| **i18n**       | next-intl (Bengali + English)       |
+| **CI/CD**      | GitHub Actions                      |
+| **Hosting**    | Vercel + Supabase                   |
 
 ## Key Features (MVP)
 

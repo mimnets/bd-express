@@ -1,4 +1,4 @@
-# BDXpress Platform — AI Agent Context
+# Amdani Xpress Platform — AI Agent Context
 
 > This file is the single source of truth for any AI agent working on this project.
 > **Read this first** before making any changes.
@@ -12,11 +12,11 @@ A cross-border e-commerce & sourcing platform for Bangladesh. Users can source p
 
 ## Team
 
-| Role | Person | Responsibilities |
-|------|--------|----------------|
-| Tech & Automation | Monirul Islam (Monir) | Full-stack dev, AI automation, mobile apps, infrastructure |
-| China Ops & Sourcing | Mr. Touab | China warehouse, supplier relationships, procurement, shipping |
-| Local Ops & CX | Mr. Sabbir | BD operations, customer support, gadgets/market expertise, accounting |
+| Role                 | Person                | Responsibilities                                                      |
+| -------------------- | --------------------- | --------------------------------------------------------------------- |
+| Tech & Automation    | Monirul Islam (Monir) | Full-stack dev, AI automation, mobile apps, infrastructure            |
+| China Ops & Sourcing | Mr. Touab             | China warehouse, supplier relationships, procurement, shipping        |
+| Local Ops & CX       | Mr. Sabbir            | BD operations, customer support, gadgets/market expertise, accounting |
 
 ## Core Business Model
 
@@ -33,24 +33,24 @@ A cross-border e-commerce & sourcing platform for Bangladesh. Users can source p
 
 ## Tech Stack (Finalized)
 
-| Layer | Technology | Status |
-|-------|------------|--------|
-| **Monorepo** | Turborepo + pnpm | ✅ |
-| **Frontend Web** | Next.js 15+ (App Router) | ✅ |
-| **Mobile** | React Native (Expo) | ✅ |
-| **Backend API** | Next.js API Routes + tRPC or REST | TBD |
-| **Database** | PostgreSQL (Supabase) | ✅ |
-| **ORM** | Prisma | ✅ |
-| **Auth** | NextAuth.js / Clerk | TBD |
-| **Payments** | SSLCommerz | ✅ |
-| **File Storage** | Cloudflare R2 / Supabase Storage | TBD |
-| **Hosting** | Vercel (web) + Supabase (DB) | ✅ |
-| **CI/CD** | GitHub Actions | ✅ |
+| Layer            | Technology                        | Status |
+| ---------------- | --------------------------------- | ------ |
+| **Monorepo**     | Turborepo + pnpm                  | ✅     |
+| **Frontend Web** | Next.js 15+ (App Router)          | ✅     |
+| **Mobile**       | React Native (Expo)               | ✅     |
+| **Backend API**  | Next.js API Routes + tRPC or REST | TBD    |
+| **Database**     | PostgreSQL (Supabase)             | ✅     |
+| **ORM**          | Prisma                            | ✅     |
+| **Auth**         | NextAuth.js / Clerk               | TBD    |
+| **Payments**     | SSLCommerz                        | ✅     |
+| **File Storage** | Cloudflare R2 / Supabase Storage  | TBD    |
+| **Hosting**      | Vercel (web) + Supabase (DB)      | ✅     |
+| **CI/CD**        | GitHub Actions                    | ✅     |
 
 ## Project Structure
 
 ```
-bdexpress-platform/
+amdani-xpress/
 ├── apps/
 │   ├── web/              # Next.js public website + customer portal
 │   ├── mobile/           # Expo React Native app (iOS + Android)
@@ -74,12 +74,12 @@ bdexpress-platform/
 
 ## Development Phases
 
-| Phase | Timeline | Key Deliverables |
-|-------|----------|-----------------|
-| **Phase 1: MVP** | Weeks 1-8 | Website + basic ordering, payment, manual ops |
-| **Phase 2: Automation** | Weeks 9-16 | API integration, AI chatbot, F-commerce portal |
-| **Phase 3: Scale** | Weeks 17-24 | B2B portal, inventory, analytics |
-| **Phase 4: Expansion** | Month 6+ | Partner API, BD warehouse, subscriptions |
+| Phase                   | Timeline    | Key Deliverables                               |
+| ----------------------- | ----------- | ---------------------------------------------- |
+| **Phase 1: MVP**        | Weeks 1-8   | Website + basic ordering, payment, manual ops  |
+| **Phase 2: Automation** | Weeks 9-16  | API integration, AI chatbot, F-commerce portal |
+| **Phase 3: Scale**      | Weeks 17-24 | B2B portal, inventory, analytics               |
+| **Phase 4: Expansion**  | Month 6+    | Partner API, BD warehouse, subscriptions       |
 
 ## Current Task Status
 
@@ -88,7 +88,7 @@ See `.ai/RULES.md` for coding conventions & agent rules.
 
 ## Key Links
 
-- Business Plan: `../projects/bdexpress/`
+- Business Plan: `../projects/amdani-xpress/`
 - Design Files: (TBD — Figma)
 - API Docs: (TBD)
 - Deployment: (TBD — Vercel)

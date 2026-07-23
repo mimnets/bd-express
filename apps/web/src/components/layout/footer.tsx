@@ -33,14 +33,14 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-gray-100 bg-gray-50">
+    <footer className="border-t border-rose-100 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600">
+            <Link href="/" className="flex items-center gap-2 text-xl font-bold text-rose-600">
               <Package className="h-6 w-6" />
-              <span>BDXpress</span>
+              <span>Amdani Xpress</span>
             </Link>
             <p className="mt-3 text-sm text-gray-500">{t("footer.tagline")}</p>
           </div>
@@ -48,11 +48,16 @@ export function Footer() {
           {/* Link columns */}
           {sections.map((section) => (
             <div key={section.titleKey}>
-              <h3 className="font-semibold text-sm text-gray-900">{t(section.titleKey as never)}</h3>
+              <h3 className="text-sm font-semibold text-gray-900">
+                {t(section.titleKey as never)}
+              </h3>
               <ul className="mt-3 space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-gray-500 transition-colors hover:text-blue-600">
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-500 transition-colors hover:text-rose-600"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -63,7 +68,9 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-200 pt-6 text-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} BDXpress. {t("footer.rights")}</p>
+          <p>
+            © {new Date().getFullYear()} Amdani Xpress. {t("footer.rights")}
+          </p>
         </div>
       </div>
     </footer>

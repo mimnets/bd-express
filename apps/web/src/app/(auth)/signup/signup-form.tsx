@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -75,10 +75,10 @@ export function SignupForm() {
         <div className="mb-8 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-2xl font-bold text-blue-600"
+            className="inline-flex items-center gap-2 text-2xl font-bold text-rose-600"
           >
             <Package className="h-7 w-7" />
-            BDXpress
+            Amdani Xpress
           </Link>
           <h1 className="mt-4 text-xl font-semibold text-gray-900">{t("auth.signupTitle")}</h1>
           <p className="mt-1 text-sm text-gray-500">{t("auth.signupSubtitle")}</p>
@@ -94,7 +94,7 @@ export function SignupForm() {
               type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
               placeholder={t("auth.namePlaceholder")}
               required
             />
@@ -103,7 +103,7 @@ export function SignupForm() {
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
               {t("auth.phone")}
             </label>
-            <div className="mt-1 flex rounded-lg border border-gray-300 shadow-sm focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+            <div className="mt-1 flex rounded-lg border border-gray-300 shadow-sm focus-within:border-rose-500 focus-within:ring-1 focus-within:ring-rose-500">
               <span className="flex items-center rounded-l-lg border-r border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
                 +880
               </span>
@@ -125,7 +125,7 @@ export function SignupForm() {
         </form>
         <p className="mt-6 text-center text-sm text-gray-500">
           {t("auth.hasAccount")}{" "}
-          <Link href="/login" className="font-medium text-blue-600 hover:underline">
+          <Link href="/login" className="font-medium text-rose-600 hover:underline">
             {t("auth.loginLink")}
           </Link>
         </p>

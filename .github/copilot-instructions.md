@@ -1,10 +1,12 @@
-# GitHub Copilot Instructions for BDXpress
+# GitHub Copilot Instructions for Amdani Xpress
 
 ## Project Context
-BDXpress is a cross-border e-commerce platform for Bangladesh. 
+
+Amdani Xpress is a cross-border import platform for Bangladesh.
 Users source products from Chinese platforms (Taobao, 1688, Alibaba) and get door-to-door delivery.
 
 ## Tech Stack
+
 - Next.js 15 (App Router) — Web
 - React Native (Expo) — Mobile
 - Supabase (PostgreSQL) — Database
@@ -14,6 +16,7 @@ Users source products from Chinese platforms (Taobao, 1688, Alibaba) and get doo
 - Turborepo + pnpm — Monorepo
 
 ## Coding Standards
+
 - TypeScript throughout. Define proper interfaces.
 - Server components by default (App Router)
 - Client components only for interactivity (`'use client'`)
@@ -24,15 +27,19 @@ Users source products from Chinese platforms (Taobao, 1688, Alibaba) and get doo
 - i18n with next-intl (Bengali + English)
 
 ## Allowed patterns
-- `import { ... } from "@bdexpress/database"` for shared types
+
+- `import { ... } from "@amdanixpress/database"` for shared types
 - `import { ... } from "@/components"` for app-specific components
-- `import { ... from "@bdexpress/ui" }` for shared UI
+- `import { ... from "@amdanixpress/ui" }` for shared UI
 
 ## Response format
+
 Always provide two files:
+
 1. The implementation
 2. Test file if applicable
 
 ## Environment variables
+
 Must come from `process.env.NEXT_PUBLIC_*` for client,
 `process.env.*` for server-only.

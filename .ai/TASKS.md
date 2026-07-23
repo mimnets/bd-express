@@ -1,4 +1,4 @@
-# BDXpress Tasks & Roadmap
+# Amdani Xpress Tasks & Roadmap
 
 > **Legend:** 🔴 Not started | 🟡 In progress | ✅ Complete | ⏸️ Blocked
 
@@ -22,6 +22,7 @@
 ## Phase 1: MVP Development (Weeks 1-8)
 
 ### Week 1-2: Foundation
+
 - [ ] **1.1** Initialize `apps/web` with Next.js 15+ App Router
 - [ ] **1.2** Set up shared UI components (`packages/ui`)
 - [ ] **1.3** Implement auth system (Clerk or NextAuth)
@@ -30,6 +31,7 @@
 - [ ] **1.6** SSLCommerz integration setup (`services/payment`)
 
 ### Week 3-4: Core Features
+
 - [ ] **1.7** Home page + "How It Works" landing page
 - [ ] **1.8** Product link submission form (paste Taobao/1688 URL)
 - [ ] **1.9** Curated product catalog (30-50 products seeded)
@@ -38,6 +40,7 @@
 - [ ] **1.12** Admin dashboard — order management, payment verification
 
 ### Week 5-6: Frontend & Payment
+
 - [ ] **1.13** Checkout flow (address, shipping method, payment)
 - [ ] **1.14** Payment integration (SSLCommerz + bKash buttons)
 - [ ] **1.15** Init React Native app (`apps/mobile`)
@@ -47,6 +50,7 @@
 - [ ] **1.19** Order tracking page with timeline
 
 ### Week 7-8: MVP Launch
+
 - [ ] **1.20** End-to-end testing flow
 - [ ] **1.21** Bug fixes & polish
 - [ ] **1.22** Deploy to Vercel

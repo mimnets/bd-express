@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "BDXpress — Cross-Border Sourcing from China to Bangladesh",
-    template: "%s | BDXpress",
+    default: "Amdani Xpress — Cross-Border Sourcing from China to Bangladesh",
+    template: "%s | Amdani Xpress",
   },
   description:
-    "Source products from Taobao, 1688, and Alibaba with door-to-door delivery to Bangladesh. Pay in BDT via bKash, Nagad, or card.",
+    "Amdani Xpress — Bangladesh's #1 import platform. Source products from Taobao, 1688, and Alibaba with door-to-door delivery to Bangladesh. Pay in BDT via bKash, Nagad, or card.",
 };
 
 export default function RootLayout({

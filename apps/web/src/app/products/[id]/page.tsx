@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ShoppingBag, Truck, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         {/* Back link */}
         <Link
           href="/products"
-          className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600"
+          className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-rose-600"
         >
           <ArrowLeft className="h-4 w-4" />
           পণ্য ক্যাটালগে ফিরুন
@@ -33,13 +33,13 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Product image */}
-          <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 lg:h-96">
-            <ShoppingBag className="h-24 w-24 text-blue-300" />
+          <div className="flex h-80 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100 lg:h-96">
+            <ShoppingBag className="h-24 w-24 text-rose-300" />
           </div>
 
           {/* Product info */}
           <div>
-            <p className="text-sm font-medium text-blue-600">ইলেকট্রনিক্স</p>
+            <p className="text-sm font-medium text-rose-600">ইলেকট্রনিক্স</p>
             <h1 className="mt-2 text-3xl font-bold text-gray-900">পণ্যের নাম</h1>
             <p className="mt-1 text-gray-400">Product Name (English)</p>
 
@@ -64,7 +64,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 <Card key={opt.method} padding="sm" className="text-center">
                   <div className="text-sm font-semibold text-gray-900">{opt.method}</div>
                   <div className="mt-0.5 text-xs text-gray-400">{opt.days}</div>
-                  <div className="mt-1 text-sm font-medium text-blue-600">{opt.price}</div>
+                  <div className="mt-1 text-sm font-medium text-rose-600">{opt.price}</div>
                 </Card>
               ))}
             </div>
@@ -72,7 +72,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             {/* CTA */}
             <div className="mt-6 flex gap-3">
               <Link href={`/get-started?product=${id}`}>
-                <Button size="lg" className="px-8">অর্ডার করতে কোটেশন নিন</Button>
+                <Button size="lg" className="px-8">
+                  অর্ডার করতে কোটেশন নিন
+                </Button>
               </Link>
               <Button variant="outline" size="lg">
                 WhatsApp
@@ -86,7 +88,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 কোয়ালিটি চেকড
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Truck className="h-4 w-4 text-blue-500" />
+                <Truck className="h-4 w-4 text-rose-500" />
                 দোরগোড়ায় ডেলিভারি
               </div>
             </div>

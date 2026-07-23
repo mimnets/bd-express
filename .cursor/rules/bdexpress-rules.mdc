@@ -1,11 +1,11 @@
 ---
-description: BDXpress project rules for coding assistants
+description: Amdani Xpress project rules for coding assistants
 globs: ["**/*.ts", "**/*.tsx"]
 ---
 
-# BDXpress Platform Rules
+# Amdani Xpress Platform Rules
 
-You are working on BDXpress — a cross-border e-commerce platform for Bangladesh.
+You are working on Amdani Xpress — a cross-border import platform for Bangladesh.
 Users source products from Taobao/1688/Alibaba and get them delivered door-to-door in BD.
 
 ## Context Files (READ FIRST)

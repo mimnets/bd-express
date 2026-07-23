@@ -20,13 +20,15 @@ export function WhyChooseUs() {
     <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t("why.title")}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            {t("why.title")}
+          </h2>
           <p className="mt-4 text-lg text-gray-500">{t("why.subtitle")}</p>
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit) => (
-            <Card key={benefit.title} className="text-center hover:shadow-md transition-shadow">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+            <Card key={benefit.title} className="text-center transition-shadow hover:shadow-md">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
                 <benefit.icon className="h-7 w-7" />
               </div>
               <h3 className="mt-4 font-semibold text-gray-900">{benefit.title}</h3>
